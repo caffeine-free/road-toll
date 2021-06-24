@@ -13,6 +13,7 @@ Grupo: Caffeine++*
 | Alunos    | Lucas Moreira               |
 |           | Lucas Urzedo                |
 |           | Matheus Henrique            |
+|           | Sabrina Suellen             |
 |           | Victor Hugo                 |
 | Professor | Msc prof. Johnatan Oliveira |
 | Horário   | Ter & Qui - 15:20 - 17:20   |
