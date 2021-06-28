@@ -5,7 +5,7 @@
 </p>
 
 ### Engenharia de Software II
-*Sistema de Biblioteca<br>
+*Sistema de Pedágio<br>
 Grupo: Caffeine++*
 
 |           |                             |
@@ -14,7 +14,7 @@ Grupo: Caffeine++*
 |           | Lucas Urzedo                |
 |           | Matheus Henrique            |
 |           | Sabrina Suellen             |
-|           | Victor Hugo                 |
+|           | Victor Martins              |
 | Professor | Msc prof. Johnatan Oliveira |
 | Horário   | Ter & Qui - 15:20 - 17:20   |
 
@@ -43,10 +43,10 @@ Grupo: Caffeine++*
 
 ## 1 Histórico de Revisões
 
-| Data       | Versão | Descrição                             | Autor   |
-|------------|--------|---------------------------------------|---------|
-| 18/06/2021 | 0.0    | Justificativa do Processo de Software | Sabrina |
-| 00/00/2021 | 0.0    |                                       |         |
+| Data       | Versão | Descrição                                             | Autor   |
+|------------|--------|-------------------------------------------------------|---------|
+| 18/06/2021 | 0.0    | Justificativa do Processo de Software                 | Sabrina |
+| 26/08/2021 | 0.0    | Levantamento e in ́ıcio da Especificacao de Requisitos | Victor  |
 
 Tabela 1: Revisões do Documento
 
@@ -60,30 +60,36 @@ Tabela 1: Revisões do Documento
 
 ## 3 Cronograma
 
-| Nome                                         | Tarefa                                                          | Prazo |
-|----------------------------------------------|-----------------------------------------------------------------|-------|
-| Sabrina Suellen                              | Justificativa do processo de software                           | 21/06 |
-| Lucas M., Lucas U., Matheus, Victor, Sabrina | Levantamento de Requisitos                                      | 28/06 |
-| -                                            | Plano de verificação, Validação e teste de software             | 26/07 |
-| -                                            | Implementar os casos de teste e usar as ferramentas (ex JUNIT)  | 00/00 |
+| Nome  | Tarefa             | Prazo                                             |
+|-------|--------------------|---------------------------------------------------|
+| RF01  | Gestão de Usuário  | Permite e gerencia o acesso do usuário ao sistema |
+| RF02  | Gerir pagamento    | Realiza o pagamento do pedágio                    |
+| RF03  | Gerar relatório    | Resume e exibe os pagamentos ja realizados        |
 
-Tabela 2: Cronograma
+Tabela 3: Descrição dos Casos de Uso
 
 <a id="requirements-gathering"></a>
 
 ## 4 Levantamento de Requisitos
 
-<p>Independente da metodologia de desenvolvimento utilizada, o levantamento de requisitos é o ponto de partida de qualquer projeto de software, pois é a partir dos resultados obtidos durante esta etapa que será possével definir como as próximas etapas do desenvolvimento serão executadas.</p>
-<p>Apresente a técnica que a sua equipe irá utilizar, explique porquê de tal técnica e quais os resultados obtidos.</p>
-Para o levantamento de requisitos, o analista dispõe de algumas técnicas que são utilizadas de acordo com o perfil do cliente.
-Existem diversas técnicas, cada uma adequada para um cenário específico, e dentre as comumente utilizadas podemos citar as seguintes técnicas:</p>
+### 4.1 Diagrama de Casos de Uso
 
-- 1 . Descoberta de Requisitos (Pontos de vista)
-- 2 . Entrevistas
-- 3 . Cenários
-- 4 . Casos de Uso
-- 5 . Etnografia
+<p align="center">
+<img src="docs/img/use-case.png" />
+Figura 1: Diagrama dos Casos de Uso
+</p>
 
+
+### 4.2 Descrição de Casos de Uso
+
+| Código                                         | Serviço                                                          | Descrição |
+|----------------------------------------------|-----------------------------------------------------------------|-------|
+| Sabrina Suellen                              | Justificativa do processo de software                           | 21/06 |
+| Victor Martins                               | Levantamento e início da Especificação de Requisitos          | 28/06 |
+| -                                            | Plano de verificação, Validação e teste de software             | 26/07 |
+| -                                            | Implementar os casos de teste e usar as ferramentas (ex JUNIT)  | 00/00 |
+
+Tabela 3: Descrição dos Casos de Uso
 
 <a id="requirement-specifications"></a>
 
@@ -93,34 +99,44 @@ Existem diversas técnicas, cada uma adequada para um cenário específico, e de
 
 ### 5.1 Requisitos Funcionais
 
-<p>Requisitos Funcionais são assuntos de importância fundamental ou essencial ao produto. Eles descrevem o que o produto tem de fazer ou que ações processuais deve tomar.</p>
-<p>RF01– O portal deve oferecer a busca de passagens aéreas. Informações: Local de origem, local de destino, data de partida, data de volta, quantidade de adultos, quantidade de crianças, idade das crian¸cas. Regras: O sistema deve permitir que o visitante ou o cliente do portal possam executar a busca fornecendo as informações obrigatórias e, caso haja resultado para a consulta, o portal deve disponibilizar as passagens aéreas com seus preços, as companhias disponíveis, escala e conexões (se houver), origem, destino e horário. Caso não haja disponibilidade, deve ser informado ao cliente que não houve resultado para a consulta. A obtenção dos dados de passagens de avião deve ser efetivada através de uma interface de integração entre o portal e as companhias aéreas.</p>
+**RF01– Gestão de Usuário** Serviço relacionado às tarefas de autenticação do operador de pedágio.
 
- - O portal deve validar se as informações sobre local de origem, local de destino, data de partida, data da volta e número de pessoas estão preenchidos.
- - A data de partida deve ser maior ou igual à data corrente.
- - A data de volta deve ser maior ou igual à data de partida.
- - O número de adultos ou o número de crianças deve ser maior que zero. Por padrão, o portal deve preencher o número de adultos com 1(um).
- - Caso o número de crianças seja maior que 0 (zero), a idade deve ser preenchida.
- - Caso alguma das informações acima não cumpra essas regras, o portal deve informar o usuário a respeito do erro de preenchimento.
- - Caso o valor das passagens para crianças seja diferente do valor das passagens para adultos, deve ser apresentada qual a regra utilizada, por exemplo: "Crianças acima de 6 (seis) anos devem pagar valor integral".
+-   **Cadastro:** O registro do operador no sistema é realizado a partir da entrada dos dados via campo de texto. São os dados de nome, data de nascimento, cidade/estado, registro pessoal, e-mail e senha.
 
-RF02-<br>
-RF03–<br>
-(Etc...)
+-   **Recuperação de senha:** A recuperação de senha ocorre a partir da entrada dos dados via campo de texto. São os dados de nome e registro pessoal previamente cadastrados e da nova senha.
+
+-   **Login:** O login é realizado a partir da entrada do nome e da senha previamente cadastrados, ambos previamente cadastrados.
+
+**Regras**:
+
+-   O sistema deve verificar se data de nascimento, registro pessoal e email são valores válidos.
+
+-   Quando for realizado o Login ou a Recuperação de Senha, o sistema deve validar se os dados informados correspondem aos dados que populam o banco de dados.
+
+**RF02– Gerir Pagamento** Serviço relacionado a efetuação do pagamento do pedágio. São informados os seguintes dados via campo de texto: tipo
+de veículo, placa do veículo, método de pagamento, valor e anotação (opcional). O sistema retorna o troco baseado no valor pago.
+
+**Regras**:
+
+-   O sistema deve validar o valor pago. Ele deve ser maior que zero e maior ou igual ao valor estipulado para pagamento.
+
+**RF03– Gerar Relatório** Serviço relacionado a geração de um relatório com a quantidade total de pagamentos realizados em relação à categoria do veículo.
 
 <a id="non-functional-requirements"></a>
 
 ### 5.2 Requisitos Não Funcionais
 
-<p>Requisitos Não Funcionais são as propriedades que as funções devem ter, tais como desempenho e usabilidade. Não se detenha ao seu nome pouco apropriado (nós o usamos porque é a maneira mais comum de se referir a estes tipos de requisitos)—estes requisitos são tão importantes quanto as exigências funcionais, para o sucesso do produto.</p>
-<p>RNF01. A efetivação da reserva do pacote, só deve ser liberada após o cliente estar logado no sistema. Informações: usuário e senha. Regras: o cliente terá acesso para comprar, consultar e alterar.</p>
-ETC
+ **RNF01** A efetivação da reserva do pacote, só deve ser liberada após o cliente estar logado no sistema. **Informações:** usuário e senha.
+
+**Regras:** o cliente terá acesso para comprar, consultar e alterar.
+
+**RNF02**Compatibilidade com os sistemas operacionais Windows e Linux.
 
 <a id="vvt-plan"></a>
 
 ## 6 Plano de VVT
 
-<p>Asseguram que o software cumpra com suas especificações e atenda às necessidades dos usu´arios. Você deve apresentar um plano de testes, ferramentas que serão utilizadas e coisas do tipo.</p>
+<p>Asseguram que o software cumpra com suas especificações e atenda às necessidades dos usuários. Você deve apresentar um plano de testes, ferramentas que serão utilizadas e coisas do tipo.</p>
 <p>Veja um exemplo no link: <a href="https://www.cin.ufpe.br/~gta/rup-vc/extend.formal_resources/guidances/examples/resources/test_plan_v1.htm" target="_blank">https://www.cin.ufpe.br/~gta/rup-vc/extend.formal_resources/guidances/examples/resources/test_plan_v1.
 htm</a></p>
 
