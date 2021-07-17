@@ -49,7 +49,7 @@ export default {
     &__header {
       border-radius: 8px;
       text-align: left;
-      margin: 3px;
+      margin: 3px !important;
 
       background: var(--lighten-green-blue);
     }
