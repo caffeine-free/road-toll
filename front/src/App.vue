@@ -1,18 +1,19 @@
 <template>
   <v-app>
     <v-col id="app">
-      <Home />
+      <Login />
     </v-col>
   </v-app>
 </template>
 
 <script>
-import Home from '@/views/Home.vue';
+// import Home from '@/views/Home.vue';
+import Login from '@/views/Login.vue';
 
 export default {
   name: 'App',
   components: {
-    Home,
+    Login,
   },
 };
 </script>

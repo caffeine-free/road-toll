@@ -13,7 +13,7 @@
           <v-row class="button">
             <v-btn
               block
-              large
+              x-large
               color="teal accent-3"
               @click="redirectToLogin"
             >
@@ -24,7 +24,7 @@
           <v-row class="button">
             <v-btn
               block
-              large
+              x-large
               color="teal accent-3"
               @click="redirectToRegister"
             >
@@ -35,7 +35,7 @@
           <v-row class="button">
             <v-btn
               block
-              large
+              x-large
               color="teal accent-3"
               @click="redirectToRecoverPassword"
             >
