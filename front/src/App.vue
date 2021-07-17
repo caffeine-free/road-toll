@@ -1,55 +1,60 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <router-view/>
-    </v-main>
+    <v-col id="app">
+      <Home />
+    </v-col>
   </v-app>
 </template>
 
 <script>
+import Home from '@/views/Home.vue';
 
 export default {
   name: 'App',
-
-  data: () => ({
-    //
-  }),
+  components: {
+    Home,
+  },
 };
 </script>
+
+<style lang="css">
+  :root {
+    --dark-quamarine: #017371;
+    --green-blue: #56FCA2;
+    --blue-water: #0E87CC;
+    --lighten-green-blue: #EFFEEF;
+    --red: #CC4C4D;
+    --black: #000000;
+    --white: #FFFFFF;
+  }
+
+  #app {
+    font-family: 'Staatliches', cursive;
+    text-align: center;
+    color: var(--blue-water);
+    min-width: 100vw;
+    min-height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+
+  h1 {
+    font-size: 71px;
+    color: var(--red);
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: var(--white);
+  }
+
+  h2 {
+    font-size: 70px;
+  }
+
+  h4 {
+    font-size: 45px;
+  }
+
+  h2,
+  h4 {
+    color: var(--dark-quamarine);
+  }
+</style>
