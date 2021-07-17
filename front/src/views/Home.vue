@@ -65,13 +65,13 @@ export default {
   },
   methods: {
     redirectToLogin() {
-      this.$router.push('/login');
+      this.$router.push({ path: '/login' });
     },
     redirectToRegister() {
-      this.$router.push('/register');
+      this.$router.push({ path: '/register' });
     },
     redirectToRecoverPassword() {
-      this.$router.push('/recover-password');
+      this.$router.push({ path: '/recover-password' });
     },
   },
 };

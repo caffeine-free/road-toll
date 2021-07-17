@@ -26,6 +26,7 @@ export default {
 
 <style lang="scss">
   .page-not-found {
+    background: var(--dark-quamarine);
     align-items: center;
     min-width: 100vw;
     min-height: 100vh;
@@ -35,6 +36,13 @@ export default {
     &__error,
     &__message {
       justify-content: center;
+    }
+
+    &__message {
+      h4 {
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: var(--white);
+      }
     }
   }
 </style>
