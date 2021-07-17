@@ -15,6 +15,7 @@
               block
               large
               color="teal accent-3"
+              @click="redirectToLogin"
             >
               Login
             </v-btn>
@@ -25,6 +26,7 @@
               block
               large
               color="teal accent-3"
+              @click="redirectToRegister"
             >
               Register
             </v-btn>
@@ -35,6 +37,7 @@
               block
               large
               color="teal accent-3"
+              @click="redirectToRecoverPassword"
             >
               Recover Password
             </v-btn>
@@ -59,6 +62,17 @@ export default {
     return {
       title: 'Road Toll',
     };
+  },
+  methods: {
+    redirectToLogin() {
+      this.$router.push('/login');
+    },
+    redirectToRegister() {
+      this.$router.push('/register');
+    },
+    redirectToRecoverPassword() {
+      this.$router.push('/recover-password');
+    },
   },
 };
 </script>
