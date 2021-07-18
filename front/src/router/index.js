@@ -8,27 +8,27 @@ const routes = [
     path: '/',
     alias: '/home',
     name: 'home',
-    component: () => import(/* webpackPrefetch: true */ '../views/Home.vue'),
+    component: () => import(/* webpackPrefetch: true */ '@/views/Home.vue'),
   },
   {
     path: '/login',
     name: 'login',
-    component: () => import(/* webpackPrefetch: true */ '../views/Login.vue'),
+    component: () => import(/* webpackPrefetch: true */ '@/views/Login.vue'),
   },
   {
     path: '/register',
     name: 'register',
-    component: () => import(/* webpackPrefetch: true */ '../views/Register.vue'),
+    component: () => import(/* webpackPrefetch: true */ '@/views/Register.vue'),
   },
   {
     path: '/recover',
     name: 'recover',
-    component: () => import(/* webpackPrefetch: true */ '../views/Recover.vue'),
+    component: () => import(/* webpackPrefetch: true */ '@/views/Recover.vue'),
   },
   {
     path: '*',
     name: '404',
-    component: () => import(/* webpackPrefetch: true */ '../views/PageNotFound.vue'),
+    component: () => import(/* webpackPrefetch: true */ '@/views/PageNotFound.vue'),
   },
 ];
 

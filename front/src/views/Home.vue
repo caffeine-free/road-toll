@@ -66,12 +66,15 @@ export default {
   methods: {
     redirectToLogin() {
       this.$router.push({ name: 'login' });
+      console.log('router: ', this.$router);
     },
     redirectToRegister() {
       this.$router.push({ name: 'register' });
+      console.log('router: ', this.$router);
     },
     redirectToRecoverPassword() {
       this.$router.push({ name: 'recover' });
+      console.log('router: ', this.$router);
     },
   },
 };

@@ -1,19 +1,18 @@
 <template>
   <v-app>
     <v-col id="app">
-      <Home />
+      <transition>
+        <keep-alive>
+          <router-view />
+        </keep-alive>
+      </transition>
     </v-col>
   </v-app>
 </template>
 
 <script>
-import Home from '@/views/Home.vue';
-
 export default {
   name: 'App',
-  components: {
-    Home,
-  },
 };
 </script>
 
