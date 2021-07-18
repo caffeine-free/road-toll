@@ -1,5 +1,11 @@
 /* eslint-disable no-shadow */
 /* eslint-disable arrow-parens */
+/* eslint-disable no-console */
+import {
+  postData,
+  END_POINT,
+} from '../../../services/Api';
+
 const state = {
   name: '',
   birthday: '',
@@ -7,6 +13,7 @@ const state = {
   personalRegister: '',
   email: '',
   password: '',
+  id: '',
   date: {},
 };
 
@@ -18,6 +25,7 @@ const getters = {
   getEmail: state => state.email,
   getPassword: state => state.password,
   getDate: state => state.date,
+  getId: state => state.id,
   getUser: state => state,
 };
 
@@ -30,6 +38,7 @@ const actions = {
       personalRegister = '',
       email = '',
       password = '',
+      _id = '',
       date = {},
     } = payload;
 
@@ -39,7 +48,17 @@ const actions = {
     commit('setPersonalRegister', personalRegister);
     commit('setEmail', email);
     commit('setPassword', password);
+    commit('setId', _id);
     commit('setDate', date);
+  },
+  async Login(context, header) {
+    const options = {
+      header,
+      endPoint: END_POINT.LOGIN,
+    };
+    const data = await postData(options);
+
+    return { ...data };
   },
 };
 
@@ -61,6 +80,9 @@ const mutations = {
   },
   setPassword(state, payload) {
     state.password = payload;
+  },
+  setId(state, payload) {
+    state.id = payload;
   },
   setDate(state, payload) {
     state.date = payload;

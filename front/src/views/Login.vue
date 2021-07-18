@@ -49,7 +49,7 @@
                   block
                   x-large
                   color="teal dark-0"
-                  @click="login"
+                  @click="tryLogin()"
                 >
                   Login
                 </v-btn>
@@ -73,6 +73,7 @@
 
 <script>
 import Header from '@/components/Header.vue';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'Login',
@@ -83,9 +84,38 @@ export default {
     return {
       email: '',
       password: '',
+      response: null,
       showPassword: false,
       imageSrc: 'https://image.flaticon.com/icons/png/512/829/829274.png',
     };
+  },
+  computed: {
+    ...mapGetters('user', [
+      'getUser',
+    ]),
+  },
+  methods: {
+    ...mapActions('user', [
+      'Login',
+      'setUser',
+    ]),
+    async tryLogin() {
+      const header = {
+        email: this.email,
+        password: this.password,
+      };
+      const data = await this.Login(header);
+
+      if (data.status === 200) {
+        this.response = data;
+        this.setUser(this.response.data);
+
+        this.$router.push({ path: '/operation' });
+      } else {
+        this.response = data.response.status;
+        alert(data.response.data.result);
+      }
+    },
   },
 };
 </script>
