@@ -1,11 +1,11 @@
 <template>
   <v-row>
-    <v-col class="register">
+    <v-col class="recover">
       <Header />
 
-      <v-row class="register__content">
-        <v-col class="pb-0 pt-0">
-          <v-row class="pt-4">
+      <v-row class="recover__content">
+        <v-col>
+          <v-row>
             <v-btn
               icon
               elevation="5"
@@ -17,43 +17,20 @@
             </v-btn>
           </v-row>
 
-          <v-row class="register__form">
+          <v-row class="recover__form">
             <v-col>
-              <v-row class="register__name">
+              <v-row class="recover__email">
                 <v-text-field
-                  v-model="name"
-                  label="name"
-                  placeholder="your name"
+                  v-model="email"
+                  label="e-mail"
+                  placeholder="email@email.com"
                   outlined
                   dense
                   color="tield"
                 ></v-text-field>
-              </v-row>
+              </v-row >
 
-              <v-row class="register__birthday">
-                <v-text-field
-                  v-model="birthday"
-                  label="birthday"
-                  placeholder="00/00/0000"
-                  v-mask="'##/##/####'"
-                  outlined
-                  dense
-                  color="tield"
-                ></v-text-field>
-              </v-row>
-
-              <v-row class="register__city-and-state">
-                <v-text-field
-                  v-model="cityAndState"
-                  label="city / State"
-                  placeholder="city name, state"
-                  outlined
-                  dense
-                  color="tield"
-                ></v-text-field>
-              </v-row>
-
-              <v-row class="register__personal-register">
+              <v-row class="recover__personal-register">
                 <v-text-field
                   v-model="personalRegister"
                   label="personal register"
@@ -66,21 +43,10 @@
                 ></v-text-field>
               </v-row>
 
-              <v-row class="register__email">
+              <v-row  class="recover__password">
                 <v-text-field
-                  v-model="email"
-                  label="e-mail"
-                  placeholder="email@email.com"
-                  outlined
-                  dense
-                  color="tield"
-                ></v-text-field>
-              </v-row>
-
-              <v-row class="register__password">
-                <v-text-field
-                  v-model="password"
-                  label="password"
+                  v-model="newPassword"
+                  label="new password"
                   placeholder="********"
                   outlined
                   dense
@@ -89,17 +55,26 @@
                   :type="showPassword ? 'text' : 'password'"
                   @click:append="showPassword = !showPassword"
                 ></v-text-field>
-              </v-row>
+              </v-row >
 
-              <v-row class="register__button">
+              <v-row class="recover__button">
                 <v-btn
                   block
                   x-large
                   color="teal dark-0"
-                  @click="tryRegister()"
+                  @click="tryRecover()"
                 >
-                  Register
+                  Recover
                 </v-btn>
+              </v-row>
+
+              <v-row class="recover__image">
+                <v-img
+                  :lazy-src="imageSrc"
+                  :src="imageSrc"
+                  max-height="200"
+                  max-width="250"
+                ></v-img>
               </v-row>
             </v-col>
           </v-row>
@@ -114,46 +89,38 @@ import Header from '@/components/Header.vue';
 import { mapActions } from 'vuex';
 
 export default {
-  name: 'Register',
+  name: 'recover',
   components: {
     Header,
   },
   data() {
     return {
-      name: '',
-      birthday: '',
-      cityAndState: '',
-      personalRegister: '',
       email: '',
-      password: '',
+      personalRegister: '',
+      newPassword: '',
       response: null,
       showPassword: false,
+      imageSrc: 'https://image.flaticon.com/icons/png/512/829/829274.png',
     };
   },
   methods: {
     ...mapActions('user', [
-      'Register',
+      'Recover',
       'setUser',
     ]),
-    async tryRegister() {
+    async tryRecover() {
       const header = {
-        name: this.name,
-        birthday: this.birthday,
-        city: this.cityAndState,
-        personalRegister: this.personalRegister,
         email: this.email,
+        personalRegister: this.personalRegister,
         password: this.password,
       };
-      const data = await this.Register(header);
+      const data = await this.Recover(header);
 
       if (data.status === 200) {
         this.response = data;
 
-        this.name = '';
-        this.birthday = '';
-        this.cityAndState = '';
-        this.personalRegister = '';
         this.email = '';
+        this.personalRegister = '';
         this.password = '';
 
         // this.$router.push({ path: '/home' });
@@ -167,7 +134,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .register {
+  .recover {
     &__content {
       height: calc(100vh - calc(138px + 18px));
 
@@ -175,7 +142,7 @@ export default {
     }
 
     &__form {
-      height: 630px;
+      height: 600px;
       margin: 100px 30vh;
       padding: 40px;
       border-radius: 8px;
@@ -183,17 +150,14 @@ export default {
       background: var(--green-blue);
     }
 
-    &__name,
-    &__birthday,
-    &__city-and-state,
-    &__personal-register,
     &__email,
-    &__password {
-      margin: 10px 0;
+    &__password,
+    &__personal-register {
+      margin: 5px 0;
     }
 
     &__button {
-      margin: 60px 0;
+      margin: 45px 0;
     }
 
     &__image {

@@ -69,6 +69,15 @@ const actions = {
 
     return { ...data };
   },
+  async Recover(context, header) {
+    const options = {
+      header,
+      endPoint: END_POINT.RECOVER,
+    };
+    const data = await postData(options);
+
+    return { ...data };
+  },
 };
 
 const mutations = {

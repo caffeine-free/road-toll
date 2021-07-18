@@ -1,19 +1,19 @@
 <template>
   <v-app>
     <v-col id="app">
-      <Register />
+      <Recover />
     </v-col>
   </v-app>
 </template>
 
 <script>
 // import Home from '@/views/Home.vue';
-import Register from '@/views/Register.vue';
+import Recover from '@/views/Recover.vue';
 
 export default {
   name: 'App',
   components: {
-    Register,
+    Recover,
   },
 };
 </script>
