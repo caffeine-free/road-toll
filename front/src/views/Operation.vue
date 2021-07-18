@@ -250,7 +250,13 @@ export default {
 
         if (data.status === 200) {
           this.response = data;
-          alert(data.response.data.result);
+          alert(this.response.data.result);
+
+          this.vehicle = {};
+          this.paymentMethod = {};
+          this.amountPaid = '';
+          this.licensePlate = '';
+          this.note = '';
         } else {
           this.response = data.response.status;
           alert('There s something wrong');

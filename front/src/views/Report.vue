@@ -30,6 +30,20 @@
                 </h5>
               </v-row>
 
+              <v-row class="d-flex justify-space-between">
+                <v-spacer></v-spacer>
+                <v-btn
+                  icon
+                  elevation="5"
+                  class="ma-2 mt-5 white darken-4"
+                  @click="reloadChart"
+                >
+                  <v-icon color="red">
+                    mdi-reload
+                  </v-icon>
+                </v-btn>
+              </v-row>
+
               <BarChart
                 :categories="categories"
                 :series="series"
@@ -46,7 +60,7 @@
 <script>
 import Header from '@/components/Header.vue';
 import BarChart from '@/components/BarChart.vue';
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'report',
@@ -56,7 +70,9 @@ export default {
   },
   data() {
     return {
-      data: [],
+      rawData: [],
+      series: [],
+      categories: [],
       vehicle: {},
       paymentMethod: {},
       amountPaid: 0,
@@ -104,25 +120,13 @@ export default {
   create() {
     this.getData();
   },
-  mounted() {
+  update() {
     this.getData();
   },
   computed: {
-    categories() {
-      return ['18/02/2020', '19/02/2020', '20/02/2020', '21/02/2020', '22/02/2020'];
-    },
-    series() {
-      return [{
-        name: 'motocycle',
-        data: [5, 3, 4, 7, 2],
-      }, {
-        name: 'car',
-        data: [2, 2, 3, 2, 1],
-      }, {
-        name: 'truck',
-        data: [3, 4, 4, 2, 5],
-      }];
-    },
+    ...mapGetters('user', [
+      'getName',
+    ]),
   },
   methods: {
     ...mapActions('user', [
@@ -131,9 +135,15 @@ export default {
     backToOperation() {
       this.$router.push({ path: '/operation' });
     },
+    reloadChart() {
+      this.getData();
+    },
     async getData() {
-      this.data = await this.Report();
-      console.log('data: ', this.data);
+      const { data } = await this.Report();
+      this.rawData = data;
+
+      this.categories = this.rawData.result.categories;
+      this.series = this.rawData.result.series;
     },
   },
 };

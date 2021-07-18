@@ -89,12 +89,9 @@ const actions = {
     return { ...data };
   },
   async Report() {
-    const options = {
-      endPoint: END_POINT.REPORT,
-    };
-    const data = await getData(options);
+    const data = await getData(END_POINT.REPORT);
 
-    return { ...data };
+    return data;
   },
 };
 
