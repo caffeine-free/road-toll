@@ -18,6 +18,7 @@ const getters = {
   getEmail: state => state.email,
   getPassword: state => state.password,
   getDate: state => state.date,
+  getUser: state => state,
 };
 
 const actions = {
