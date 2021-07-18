@@ -20,9 +20,10 @@ export async function getData(endPoint) {
   await api
     .get()
     .then((response) => {
-      data = response?.data;
+      data = response;
     })
     .catch((error) => {
+      data = error;
       console.error(error.message);
     });
 
@@ -48,6 +49,7 @@ export async function postData(options) {
       data = response;
     })
     .catch((error) => {
+      data = error;
       console.log(error.message);
     });
 
