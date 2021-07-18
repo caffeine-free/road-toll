@@ -10,6 +10,7 @@
               icon
               elevation="5"
               class="ma-2 white darken-4"
+              @click="backToHome"
             >
               <v-icon color="red">
                 mdi-arrow-left
@@ -110,6 +111,9 @@ export default {
         this.response = data.response.status;
         alert(data.response.data.result);
       }
+    },
+    backToHome() {
+      this.$router.push({ path: '/' });
     },
   },
 };
