@@ -7,13 +7,23 @@ const routes = [
   {
     path: '/',
     alias: '/home',
-    name: 'Home',
+    name: 'home',
     component: () => import(/* webpackPrefetch: true */ '../views/Home.vue'),
   },
   {
     path: '/login',
-    name: 'Login',
+    name: 'login',
     component: () => import(/* webpackPrefetch: true */ '../views/Login.vue'),
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import(/* webpackPrefetch: true */ '../views/Register.vue'),
+  },
+  {
+    path: '/recover',
+    name: 'recover',
+    component: () => import(/* webpackPrefetch: true */ '../views/Recover.vue'),
   },
   {
     path: '*',
