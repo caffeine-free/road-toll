@@ -5,7 +5,7 @@
 
       <v-row class="operation__content">
         <v-col>
-          <v-row>
+          <v-row class="d-flex justify-space-between">
             <v-btn
               icon
               elevation="5"
@@ -15,6 +15,14 @@
               <v-icon color="red">
                 mdi-arrow-left
               </v-icon>
+            </v-btn>
+
+            <v-btn
+              elevation="5"
+              class="ma-2 mr-8 teal dark-0"
+              @click="goToReport"
+            >
+              report
             </v-btn>
           </v-row>
 
@@ -253,6 +261,9 @@ export default {
     },
     backToHome() {
       this.$router.push({ path: '/' });
+    },
+    goToReport() {
+      this.$router.push({ path: '/report' });
     },
   },
 };

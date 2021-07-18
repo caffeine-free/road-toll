@@ -106,6 +106,9 @@ export default {
         this.response = data;
         this.setUser(this.response.data);
 
+        this.email = '';
+        this.password = '';
+
         this.$router.push({ path: '/operation' });
       } else {
         this.response = data.response.status;

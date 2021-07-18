@@ -31,6 +31,11 @@ const routes = [
     component: () => import(/* webpackPrefetch: true */ '@/views/Operation.vue'),
   },
   {
+    path: '/report',
+    name: 'report',
+    component: () => import(/* webpackPrefetch: true */ '@/views/Report.vue'),
+  },
+  {
     path: '*',
     name: '404',
     component: () => import(/* webpackPrefetch: true */ '@/views/PageNotFound.vue'),
