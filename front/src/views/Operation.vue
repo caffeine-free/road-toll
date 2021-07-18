@@ -242,10 +242,10 @@ export default {
 
         if (data.status === 200) {
           this.response = data;
-          console.log('data: ', data);
+          alert(data.response.data.result);
         } else {
           this.response = data.response.status;
-          alert(this.response.data.result);
+          alert('There s something wrong');
         }
       } else {
         alert('Missing data to be filled');
