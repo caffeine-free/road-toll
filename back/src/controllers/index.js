@@ -163,7 +163,6 @@ async function createOperator(req, res) {
     licensePlate: req.body.licensePlate,
     paymentMethod: req.body.paymentMethod,
     value: req.body.value,
-    password: req.body.password,
   });
 
   await newOperator.save();
@@ -183,19 +182,48 @@ async function reportData(req, res) {
       return;
     }
 
-    collection.find({}).toArray((error, documents) => {
+    collection.find({}, { sort: { date: 1 } }).toArray((error, documents) => {
       if (error) {
         console.log(error);
         return;
       }
 
-      const objects = [];
+      const registerCounter = new Map();
+      const categories = [];
+      const series = [{
+        name: 'motocycle',
+        data: [],
+      }, {
+        name: 'car',
+        data: [],
+      }, {
+        name: 'bus / truck',
+        data: [],
+      }, {
+        name: 'big truck',
+        data: [],
+      },
+      ];
 
       documents.forEach((element) => {
-        objects.push(element);
+        const date = new Date(element.date);
+        const formatedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+
+        const registerData = registerCounter.get(formatedDate);
+
+        if (!categories.includes(formatedDate)) {
+          categories.push(formatedDate);
+        }
+
+        if (registerData) {
+          registerData.push(element.vehicleType);
+          registerCounter.set(formatedDate, registerData);
+        } else {
+          registerCounter.set(formatedDate, [element.vehicleType]);
+        }
       });
 
-      if (objects.length === 0) {
+      if (registerCounter.size === 0) {
         const jsonResult = {
           uri: `${req.baseUrl}${req.url}`,
           result: 'There is no operations to report',
@@ -203,9 +231,37 @@ async function reportData(req, res) {
 
         res.status(404).send(jsonResult);
       } else {
+        for (let index = 0; index < registerCounter.size; index += 1) {
+          const motocycles = [];
+          const cars = [];
+          const trucks = [];
+          const bigTruck = [];
+          const vehicleCounter = registerCounter.get(categories[index]);
+
+          vehicleCounter.forEach((element) => {
+            if (element === 'motocycle') {
+              motocycles.push(element);
+            } else if (element === 'car') {
+              cars.push(element);
+            } else if (element === 'bus' || element === 'truck') {
+              trucks.push(element);
+            } else if (element === 'big truck') {
+              bigTruck.push(element);
+            }
+          });
+
+          series[0].data.push(motocycles.length);
+          series[1].data.push(cars.length);
+          series[2].data.push(trucks.length);
+          series[3].data.push(bigTruck.length);
+        }
+
         const jsonResult = {
           uri: `${req.baseUrl}${req.url}`,
-          result: objects,
+          result: {
+            categories,
+            series,
+          },
         };
 
         res.status(200).send(jsonResult);
