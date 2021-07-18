@@ -73,7 +73,7 @@
 
 <script>
 import Header from '@/components/Header.vue';
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'Login',
@@ -88,11 +88,6 @@ export default {
       showPassword: false,
       imageSrc: 'https://image.flaticon.com/icons/png/512/829/829274.png',
     };
-  },
-  computed: {
-    ...mapGetters('user', [
-      'getUser',
-    ]),
   },
   methods: {
     ...mapActions('user', [

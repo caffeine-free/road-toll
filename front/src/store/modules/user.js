@@ -60,6 +60,15 @@ const actions = {
 
     return { ...data };
   },
+  async Register(context, header) {
+    const options = {
+      header,
+      endPoint: END_POINT.REGISTER,
+    };
+    const data = await postData(options);
+
+    return { ...data };
+  },
 };
 
 const mutations = {
