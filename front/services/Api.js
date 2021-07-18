@@ -26,7 +26,6 @@ export async function getData(endPoint) {
       data = error;
       console.error(error.message);
     });
-
   return data;
 }
 

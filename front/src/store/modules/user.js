@@ -3,6 +3,7 @@
 /* eslint-disable no-console */
 import {
   postData,
+  getData,
   END_POINT,
 } from '../../../services/Api';
 
@@ -86,6 +87,11 @@ const actions = {
     const data = await postData(options);
 
     return { ...data };
+  },
+  async Report() {
+    const data = await getData(END_POINT.REPORT);
+
+    return data;
   },
 };
 

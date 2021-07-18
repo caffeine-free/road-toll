@@ -5,7 +5,7 @@
 
       <v-row class="operation__content">
         <v-col>
-          <v-row>
+          <v-row class="d-flex justify-space-between">
             <v-btn
               icon
               elevation="5"
@@ -15,6 +15,14 @@
               <v-icon color="red">
                 mdi-arrow-left
               </v-icon>
+            </v-btn>
+
+            <v-btn
+              elevation="5"
+              class="ma-2 mr-8 teal dark-0"
+              @click="goToReport"
+            >
+              report
             </v-btn>
           </v-row>
 
@@ -229,7 +237,7 @@ export default {
     async confirmOperation() {
       const allInfo = this.vehicle && this.paymentMethod && this.amountPaid && this.licensePlate;
       if (allInfo) {
-        const vehicleType = this.tollPrices.filter((el) => el.value === this.vehicle).text;
+        const vehicleType = this.tollPrices.filter((ele) => ele.value === this.vehicle).pop().text;
 
         const header = {
           vehicleType,
@@ -242,7 +250,13 @@ export default {
 
         if (data.status === 200) {
           this.response = data;
-          alert(data.response.data.result);
+          alert(this.response.data.result);
+
+          this.vehicle = {};
+          this.paymentMethod = {};
+          this.amountPaid = '';
+          this.licensePlate = '';
+          this.note = '';
         } else {
           this.response = data.response.status;
           alert('There s something wrong');
@@ -253,6 +267,9 @@ export default {
     },
     backToHome() {
       this.$router.push({ path: '/' });
+    },
+    goToReport() {
+      this.$router.push({ path: '/report' });
     },
   },
 };
