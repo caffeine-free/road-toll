@@ -243,7 +243,7 @@ async function reportData(req, res) {
               motocycles.push(element);
             } else if (element === 'car') {
               cars.push(element);
-            } else if (element === 'bus' || element === 'truck') {
+            } else if (element === 'bus / truck') {
               trucks.push(element);
             } else if (element === 'big truck') {
               bigTruck.push(element);
