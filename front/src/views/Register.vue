@@ -26,6 +26,7 @@
                   placeholder="your name"
                   outlined
                   dense
+                  :rules="requiredRule"
                   color="tield"
                 ></v-text-field>
               </v-row>
@@ -38,6 +39,7 @@
                   v-mask="'##/##/####'"
                   outlined
                   dense
+                  :rules="requiredRule"
                   color="tield"
                 ></v-text-field>
               </v-row>
@@ -49,6 +51,7 @@
                   placeholder="city name, state"
                   outlined
                   dense
+                  :rules="requiredRule"
                   color="tield"
                 ></v-text-field>
               </v-row>
@@ -62,6 +65,7 @@
                   maxlength="14"
                   outlined
                   dense
+                  :rules="requiredRule"
                   color="tield"
                 ></v-text-field>
               </v-row>
@@ -74,6 +78,7 @@
                   outlined
                   dense
                   color="tield"
+                  :rules="requiredRule"
                 ></v-text-field>
               </v-row>
 
@@ -87,6 +92,7 @@
                   color="tield"
                   :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                   :type="showPassword ? 'text' : 'password'"
+                  :rules="passwordRules"
                   @click:append="showPassword = !showPassword"
                 ></v-text-field>
               </v-row>
@@ -126,6 +132,12 @@ export default {
       personalRegister: '',
       email: '',
       password: '',
+      passwordRules: [
+        (v) => (v && v.length >= 5) || 'This field must have atleast 5 characters',
+      ],
+      requiredRule: [
+        (v) => !!v || 'Required.',
+      ],
       response: null,
       showPassword: false,
     };

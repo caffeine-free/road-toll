@@ -26,6 +26,7 @@
                   placeholder="email@email.com"
                   outlined
                   dense
+                  :rules="requiredRule"
                   color="tield"
                 ></v-text-field>
               </v-row >
@@ -39,6 +40,7 @@
                   maxlength="14"
                   outlined
                   dense
+                  :rules="requiredRule"
                   color="tield"
                 ></v-text-field>
               </v-row>
@@ -53,6 +55,7 @@
                   color="tield"
                   :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                   :type="showPassword ? 'text' : 'password'"
+                  :rules="passwordRules"
                   @click:append="showPassword = !showPassword"
                 ></v-text-field>
               </v-row >
@@ -98,6 +101,12 @@ export default {
       email: '',
       personalRegister: '',
       newPassword: '',
+      passwordRules: [
+        (v) => (v && v.length >= 5) || 'This field must have atleast 5 characters',
+      ],
+      requiredRule: [
+        (v) => !!v || 'Required.',
+      ],
       response: null,
       showPassword: false,
       imageSrc: 'https://image.flaticon.com/icons/png/512/829/829274.png',
