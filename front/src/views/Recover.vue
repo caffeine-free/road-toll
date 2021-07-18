@@ -112,7 +112,7 @@ export default {
       const header = {
         email: this.email,
         personalRegister: this.personalRegister,
-        password: this.password,
+        password: this.newPassword,
       };
       const data = await this.Recover(header);
 
@@ -121,7 +121,7 @@ export default {
 
         this.email = '';
         this.personalRegister = '';
-        this.password = '';
+        this.newPassword = '';
 
         // this.$router.push({ path: '/home' });
       } else {
