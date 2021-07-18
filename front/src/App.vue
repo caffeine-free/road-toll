@@ -52,6 +52,11 @@ export default {
     font-size: 45px;
   }
 
+  h5 {
+    font-size: 21px;
+    color: var(--white);
+  }
+
   h2,
   h4 {
     color: var(--dark-quamarine);

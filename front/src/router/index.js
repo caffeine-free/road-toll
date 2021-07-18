@@ -26,6 +26,11 @@ const routes = [
     component: () => import(/* webpackPrefetch: true */ '@/views/Recover.vue'),
   },
   {
+    path: '/operation',
+    name: 'operation',
+    component: () => import(/* webpackPrefetch: true */ '@/views/Operation.vue'),
+  },
+  {
     path: '*',
     name: '404',
     component: () => import(/* webpackPrefetch: true */ '@/views/PageNotFound.vue'),

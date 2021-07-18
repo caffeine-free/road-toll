@@ -78,6 +78,15 @@ const actions = {
 
     return { ...data };
   },
+  async Operation(context, header) {
+    const options = {
+      header,
+      endPoint: END_POINT.OPERATION,
+    };
+    const data = await postData(options);
+
+    return { ...data };
+  },
 };
 
 const mutations = {
