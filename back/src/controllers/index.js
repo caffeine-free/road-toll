@@ -1,8 +1,21 @@
 const mongoose = require('mongoose');
 const ModelOperation = require('../models/operationModel');
 const ModelUser = require('../models/userModel');
+const utils = require('../utils');
 
 async function userLogin(req, res) {
+  const validEmail = utils.isEmailValid(req.body.email);
+
+  if (!validEmail) {
+    const jsonResult = {
+      uri: `${req.baseUrl}${req.url}`,
+      result: 'Invalid email',
+    };
+
+    res.status(403).send(jsonResult);
+    return;
+  }
+
   mongoose.connection.db.collection('users', (error, collection) => {
     if (error) {
       console.error(error);
@@ -19,7 +32,7 @@ async function userLogin(req, res) {
         } else {
           const jsonResult = {
             uri: `${req.baseUrl}${req.url}`,
-            result: 'user unauthorized',
+            result: 'User unauthorized',
           };
 
           res.status(403).send(jsonResult);
@@ -27,7 +40,7 @@ async function userLogin(req, res) {
       } else {
         const jsonResult = {
           uri: `${req.baseUrl}${req.url}`,
-          result: 'user not found',
+          result: 'User not found',
         };
 
         res.status(404).send(jsonResult);
@@ -37,6 +50,18 @@ async function userLogin(req, res) {
 }
 
 async function userRegister(req, res) {
+  const validEmail = utils.isEmailValid(req.body.email);
+
+  if (!validEmail) {
+    const jsonResult = {
+      uri: `${req.baseUrl}${req.url}`,
+      result: 'Invalid email',
+    };
+
+    res.status(403).send(jsonResult);
+    return;
+  }
+
   mongoose.connection.db.collection('users', (error, collection) => {
     if (error) {
       console.log(error);
@@ -50,7 +75,7 @@ async function userRegister(req, res) {
       if (data) {
         const jsonResult = {
           uri: `${req.baseUrl}${req.url}`,
-          result: 'duplicate user',
+          result: 'Email already used',
         };
 
         res.status(409).send(jsonResult);
@@ -69,7 +94,7 @@ async function userRegister(req, res) {
 
         const jsonResult = {
           uri: `${req.baseUrl}${req.url}`,
-          result: 'user created',
+          result: 'User created!',
         };
 
         res.status(200).send(jsonResult);
@@ -106,14 +131,14 @@ async function userRecover(req, res) {
 
           const jsonResult = {
             uri: `${req.baseUrl}${req.url}`,
-            result: 'user password updated',
+            result: 'User password updated',
           };
 
           res.status(200).send(jsonResult);
         } else {
           const jsonResult = {
             uri: `${req.baseUrl}${req.url}`,
-            result: 'user unauthorized',
+            result: 'User unauthorized',
           };
 
           res.status(403).send(jsonResult);
@@ -121,7 +146,7 @@ async function userRecover(req, res) {
       } else {
         const jsonResult = {
           uri: `${req.baseUrl}${req.url}`,
-          result: 'user not found',
+          result: 'User not found',
         };
 
         res.status(404).send(jsonResult);
@@ -145,7 +170,7 @@ async function createOperator(req, res) {
 
   const jsonResult = {
     uri: `${req.baseUrl}${req.url}`,
-    result: 'operator created',
+    result: 'Operator created!',
   };
 
   res.status(200).send(jsonResult);
@@ -173,7 +198,7 @@ async function reportData(req, res) {
       if (objects.length === 0) {
         const jsonResult = {
           uri: `${req.baseUrl}${req.url}`,
-          result: 'there is no operators in collection operations',
+          result: 'There is no operations to report',
         };
 
         res.status(404).send(jsonResult);
