@@ -237,7 +237,7 @@ export default {
     async confirmOperation() {
       const allInfo = this.vehicle && this.paymentMethod && this.amountPaid && this.licensePlate;
       if (allInfo) {
-        const vehicleType = this.tollPrices.filter((el) => el.value === this.vehicle).text;
+        const vehicleType = this.tollPrices.filter((ele) => ele.value === this.vehicle).pop().text;
 
         const header = {
           vehicleType,

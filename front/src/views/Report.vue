@@ -10,7 +10,7 @@
               icon
               elevation="5"
               class="ma-2 white darken-4"
-              @click="backToHome"
+              @click="backToOperation"
             >
               <v-icon color="red">
                 mdi-arrow-left
@@ -30,6 +30,11 @@
                 </h5>
               </v-row>
 
+              <BarChart
+                :categories="categories"
+                :series="series"
+                class="pt-10"
+              />
             </v-col>
           </v-row>
         </v-col>
@@ -40,15 +45,18 @@
 
 <script>
 import Header from '@/components/Header.vue';
-import { mapActions, mapGetters } from 'vuex';
+import BarChart from '@/components/BarChart.vue';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'report',
   components: {
     Header,
+    BarChart,
   },
   data() {
     return {
+      data: [],
       vehicle: {},
       paymentMethod: {},
       amountPaid: 0,
@@ -93,64 +101,39 @@ export default {
       ],
     };
   },
+  create() {
+    this.getData();
+  },
+  mounted() {
+    this.getData();
+  },
   computed: {
-    ...mapGetters('user', [
-      'getName',
-      'getEmail',
-    ]),
-    change() {
-      const isThereAmountPaid = parseFloat(this.amountPaid);
-      const isThereVehicleSelect = parseFloat(this.vehicle);
-
-      const change = isThereAmountPaid && isThereVehicleSelect
-        ? (isThereAmountPaid - isThereVehicleSelect).toFixed(2)
-        : '0.00';
-
-      return change;
+    categories() {
+      return ['18/02/2020', '19/02/2020', '20/02/2020', '21/02/2020', '22/02/2020'];
+    },
+    series() {
+      return [{
+        name: 'motocycle',
+        data: [5, 3, 4, 7, 2],
+      }, {
+        name: 'car',
+        data: [2, 2, 3, 2, 1],
+      }, {
+        name: 'truck',
+        data: [3, 4, 4, 2, 5],
+      }];
     },
   },
   methods: {
     ...mapActions('user', [
-      'report',
-      'setUser',
+      'Report',
     ]),
-    cancelreport() {
-      this.vehicle = {};
-      this.paymentMethod = {};
-      this.amountPaid = '';
-      this.licensePlate = '';
-      this.note = '';
+    backToOperation() {
+      this.$router.push({ path: '/operation' });
     },
-    async confirmreport() {
-      const allInfo = this.vehicle && this.paymentMethod && this.amountPaid && this.licensePlate;
-      if (allInfo) {
-        const vehicleType = this.tollPrices.filter((el) => el.value === this.vehicle).text;
-
-        const header = {
-          vehicleType,
-          email: this.getEmail,
-          licensePlate: this.licensePlate,
-          paymentMethod: this.paymentMethod,
-          value: this.amountPaid,
-        };
-        const data = await this.report(header);
-
-        if (data.status === 200) {
-          this.response = data;
-          alert(data.response.data.result);
-        } else {
-          this.response = data.response.status;
-          alert('There s something wrong');
-        }
-      } else {
-        alert('Missing data to be filled');
-      }
-    },
-    backToHome() {
-      this.$router.push({ path: '/' });
-    },
-    goToReport() {
-      this.$router.push({ path: '/report' });
+    async getData() {
+      this.data = await this.Report();
+      console.log('data: ', this.data);
     },
   },
 };
