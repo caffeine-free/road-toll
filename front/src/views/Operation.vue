@@ -51,7 +51,11 @@
                       v-model="vehicle"
                       :items="tollPrices"
                       :menu-props="{ top: false, offsetY: true }"
-                    ></v-select>
+                    >
+                      <template slot='item' slot-scope='{ item }'>
+                        {{ item.text }} ($ {{ item.value.toFixed(2) }})
+                      </template>
+                    </v-select>
                   </v-row >
 
                   <v-row class="operation__payment-method pb-7">
@@ -291,6 +295,7 @@ export default {
 <style lang="scss">
   .operation {
     &__content {
+      min-height: 720px;
       height: calc(100vh - calc(138px + 18px));
 
       background: var(--blue-water);
