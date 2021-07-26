@@ -7,6 +7,8 @@
         </keep-alive>
       </transition>
     </v-col>
+
+    <notifications position="bottom right" />
   </v-app>
 </template>
 
@@ -35,6 +37,14 @@ export default {
     min-height: 100vh;
     max-width: 100vw;
     max-height: 100vh;
+  }
+
+  .notification-title {
+    font-size: 25px;
+  }
+
+  .notification-content {
+    font-size: 20px;
   }
 
   h1 {

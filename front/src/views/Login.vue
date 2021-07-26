@@ -112,7 +112,12 @@ export default {
         this.$router.push({ path: '/operation' });
       } else {
         this.response = data.response.status;
-        alert(data.response.data.result);
+
+        this.$notify({
+          title: ': /',
+          text: `${data.response.data.result} ...`,
+          type: 'error ',
+        });
       }
     },
     backToHome() {
