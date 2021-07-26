@@ -163,6 +163,7 @@ async function createOperator(req, res) {
     licensePlate: req.body.licensePlate,
     paymentMethod: req.body.paymentMethod,
     value: req.body.value,
+    note: req.body.note,
   });
 
   await newOperator.save();
