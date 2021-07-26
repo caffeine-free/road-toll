@@ -120,9 +120,6 @@ export default {
   create() {
     this.getData();
   },
-  update() {
-    this.getData();
-  },
   computed: {
     ...mapGetters('user', [
       'getName',
@@ -161,7 +158,6 @@ export default {
       height: 600px;
       margin: 0px 10vh;
       border-radius: 8px;
-      // max-width: 800px;
 
       background: var(--green-blue);
     }
