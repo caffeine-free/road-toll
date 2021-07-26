@@ -6,6 +6,7 @@ const OperationSchema = mongoose.Schema({
   licensePlate: String,
   paymentMethod: String,
   value: Number,
+  note: String,
   date: {
     type: Date,
     default: Date.now,
