@@ -291,6 +291,7 @@ export default {
 <style lang="scss">
   .operation {
     &__content {
+      min-height: 720px;
       height: calc(100vh - calc(138px + 18px));
 
       background: var(--blue-water);
