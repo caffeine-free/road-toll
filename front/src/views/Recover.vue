@@ -129,14 +129,25 @@ export default {
       if (data.status === 200) {
         this.response = data;
 
+        this.$notify({
+          title: ': )',
+          text: `${data.data.result}!`,
+          type: 'success',
+        });
+
         this.email = '';
         this.personalRegister = '';
         this.newPassword = '';
 
-        // this.$router.push({ path: '/home' });
+        this.$router.push({ path: '/' });
       } else {
         this.response = data.response.status;
-        alert(data.response.data.result);
+
+        this.$notify({
+          title: ': /',
+          text: `${data.response.data.result} ...`,
+          type: 'error',
+        });
       }
     },
     backToHome() {

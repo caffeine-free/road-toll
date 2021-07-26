@@ -245,24 +245,37 @@ export default {
           licensePlate: this.licensePlate,
           paymentMethod: this.paymentMethod,
           value: this.amountPaid,
+          note: this.note,
         };
         const data = await this.Operation(header);
 
         if (data.status === 200) {
           this.response = data;
-          alert(this.response.data.result);
 
           this.vehicle = {};
           this.paymentMethod = {};
           this.amountPaid = '';
           this.licensePlate = '';
           this.note = '';
+
+          this.$notify({
+            title: ':)',
+            text: `${data.data.result}`,
+            type: 'success',
+          });
         } else {
-          this.response = data.response.status;
-          alert('There s something wrong');
+          this.$notify({
+            title: ': /',
+            text: `${data.response.data.result} ...`,
+            type: 'error',
+          });
         }
       } else {
-        alert('Missing data to be filled');
+        this.$notify({
+          title: 'x D',
+          text: 'Missing data to be filled ...',
+          type: 'warn',
+        });
       }
     },
     backToHome() {
