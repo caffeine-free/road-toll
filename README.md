@@ -50,12 +50,13 @@ siga de forma rápida e consistente com o que é esperado.
 
 # Cronograma
 
-| Código          | Serviço                                                        | Descrição |
-| :-------------- | :------------------------------------------------------------- | :-------- |
-| Sabrina Suellen | Justificativa do processo de software                          | 21/06     |
-| Victor Martins  | Levantamento e início da Especificação de Requisitos           | 28/06     |
-| \-              | Plano de verificação, Validação e teste de software            | 26/07     |
-| \-              | Implementar os casos de teste e usar as ferramentas (ex JUNIT) | 00/00     |
+| Código            | Serviço                                                        | Descrição |
+| :--------------   | :------------------------------------------------------------- | :-------- |
+| Sabrina Suellen   | Justificativa do processo de software                          | 21/06     |
+| Victor Martins    | Diagramas de Casos de Uso e Descrição dos cenários             | 28/06     |
+| Sabrina, Victor   | Levantamento dos Requisitosdo software                         | 19/07     |
+| Lucas U., Matheus | Implementação do sistema                                       | 20/07     |
+| Sabrina, Victor   | Plano de verificação, validação e teste de software            | 26/07     |
 
 # Levantamento de Requisitos
 
@@ -136,31 +137,54 @@ adição de novas características que se fizerem necessárias.
 
 # Plano de VVT
 
-Asseguram que o software cumpra com suas especificações e atenda às necessidades dos usuários. Você deve apresentar um
-plano de testes, ferramentas que serão utilizadas e coisas do tipo.
-
-Veja um exemplo no link:
-<https://www.cin.ufpe.br/~gta/rup-vc/extend.formal_resources/guidances/examples/resources/test_plan_v1.htm>
-
 ## Requisitos a serem testados
 
-Esta seção descreve em linhas gerais o conjunto de requisitos a serem testados no projeto a ser desenvolvido,
-comunicando o que deve ser verificado. Exemplos de requisitos a serem testados são: desempenho, segurança, interface de
-usuário, controle de acesso, funcionalidades.
+**Gestão de Usuários:** o objetivo deste teste é a verificação do usuário registrado e ao login deste, é feito também a 
+validação de campos de senha e semelhantes.
+- verificar se registro foi criado.
+- verificar login com registro criado.
+
+**Gestão de Pagamento:** validação dos campos como de pagamento, veículo e placa do veículo.
+- verificar veículos e suas placas.
+- verificar valores inseridos.
+- realizar tabela de relatório.
+
+Ao realizar teste de interface do usuário em ambos os serviços que compõem o sistema, o foco deve estar em verificar se os botões estão funcionando corretamente, se a interface está de acordo com os requisitos que foram estabelecidos e verificar se o aplicativo satisfaz à regra de negócio.
+
+Testes de segurança são usados com o intuito de revelar falhas e garantir a qualidade do software, verificando a proteção dos dados relacionados ao software e conferindo aspectos relacionados à proteção dos dados pessoais e redirecionamento para sites maliciosos.
 
 ## Estratégias e ferramentas de teste
 
-Apresenta um conjunto de tipos de testes a serem realizados, respectivas técnicas empregadas e critério de finalização
-de teste. Além disso, é listado o conjunto de ferramentas utilizadas.
+A ferramenta utilizada para testes sistemáticos foi o Jest, um framework open-source para execução de testes unitários baseado em JavaScript. O framework foi criado para testar o framework React, mas sua implementação se tornou muito mais ampla e se expandiu para outras plataformas como Node, Redux, e até mesmo plataformas em TypeScript como Angular e Ionic.
 
-## Equipe e infra-estrutura
+Os testes unitários são testes executados com a intenção de testar cada unidade do sistema individualmente, modelando os testes a partir de uma perspectiva interna do sistema. Assim, os testes unitários são aqueles testes onde o objetivo é isolar cada parte do sistema para garantir que elas estejam funcionando conforme especificado.
 
-Contém descrição da equipe e da infra-estrutura utilizada para o desenvolvimento das atividades de testes, incluindo:
-pessoal, equipamentos, software de apoio, materiais, dentre outros. Isto visa garantir uma estrutura adequada para a
-execução das atividades de testes previstas no plano.
 
 ## Execução do Plano de Teste
+### Registro Usuário
 
+**Features** Testar a funcionalidade de registrar usuário.
+
+**Cenário** O administrador deseja realizar o cadastrado de um usuário.
+
+### Fazer Login
+
+**Feature** Testar a funcionalidade de login.
+
+**Cenário** O usu ́ario que foram registrados, realizam login no sistema
+
+### Registrar pedágio
+
+**Feature** Testar a adicão de pedágios.
+
+**Cenário** O usuário realiza a adição dos veículos.
+
+### Exibir Relatório
+
+**Feature** Testar relatório dos veículos registrados.
+
+**Cenário** Ao fim do expediente os usuários precisam fazer um relatório
+onde será retornado o total de veículos que passaram.
 
 # Medição e Qualidade de Software
 
@@ -169,7 +193,7 @@ seu software. Apresente o plano e os resultados a partir da prática de ferramen
 exemplo. Em Java, temos uma ferramenta chamada JDEODORANT. Você pode avaliar as métricas de qualidade também, por
 exemplo, em Java, temos CKMetrics\[1\]
 
-## 8 Observações
+## Observações
 
 <p>Apresente aqui as dificuldades na disciplina, trabalho pr´atico e coisas do
 tipo</p>
@@ -179,7 +203,8 @@ Figura 1: Exemplo
 
 <a id="References"></a>
 
-## 9 Referências
+## Referências
 
-- [1] Chapman, S.J. – Electric Machinery Fundamentals, 4th Edition;
-- [2] Fitzgerald, A. E. – Máquinas Elétricas, 2da Edição;
+- [1] Sommerville, Ian -- Software Engineering, 8th Edition;
+- [2] Johnatan Oliveira -- Transparências de aula no Moodle;
+
