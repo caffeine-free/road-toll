@@ -21,23 +21,36 @@ Grupo: Caffeine++*
 
 *Ouro Preto, 18 de Junho de 2021*
 
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/caffeine-free/road-toll.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/caffeine-free/road-toll/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/caffeine-free/road-toll.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/caffeine-free/road-toll/context:javascript)
+
 ## Conteúdo
 
-- [1 Histórico de Revisões](#revisions-history)
-- [2 Processo e Software](#process-and-software)
-- [3 Cronograma](#schedule)
-- [4 Levantamento de Requisitos](#requirements-gathering)
-- [5 Especificações de Requisitos](#requirement-specifications)
-    - [5.1 Requisitos Funcionais](#functional-requirements)
-    - [5.2 Requisitos Não Funcionais](#non-functional-requirements)
-- [6 Plano de VVT](#vvt-plan)
-    - [6.1 Requisitos a serem testados](#requirements-to-be-tested)
-    - [6.2 Estratégias e ferramentas de teste](#testing-strategies-and-tools)
-    - [6.3 Equipe e infra-estrutura](#team-and-infrastructure)
-    - [6.4 Execução do Plano de Teste](#test-plan-execution)
-- [7 Medição e Qualidade de Software](#software-measurement-and-quality)
-- [8 Observações](#comments)
-- [9 Referências](#References)
+- [Processo e Software](#processo-e-software)
+- [Cronograma](#cronograma)
+- [Levantamento de Requisitos](#levantamento-de-requisitos)
+  - [Diagrama de Caso de Uso](#diagrama-de-caso-de-uso)
+  - [Descrição de Caso de Uso](#descrição-de-caso-de-uso)
+- [Especificação de Requisitos](#especificação-de-requisitos)
+  - [Requisitos Funcionais](#requisitos-funcionais)
+  - [Requisitos Não Funcionais](#requisitos-não-funcionais)
+    - [Usabilidade](#usabilidade)
+    - [Desempenho](#desempenho)
+    - [Portabilidade](#portabilidade)
+    - [Requisitos Legais](#requisitos-legais)
+    - [Requisitos de Segurança](#requisitos-de-segurança)
+    - [Manutenibilidade](#manutenibilidade)
+- [Plano de VVT](#plano-de-vvt)
+  - [Requisitos a serem testados](#requisitos-a-serem-testados)
+  - [Estratégias e ferramentas de teste](#estratégias-e-ferramentas-de-teste)
+  - [Execução do Plano de Teste](#execução-do-plano-de-teste)
+    - [Registro Usuário](#registro-usuário)
+    - [Fazer Login](#fazer-login)
+    - [Registrar pedágio](#registrar-pedágio)
+    - [Exibir Relatório](#exibir-relatório)
+- [Medição e Qualidade de Software](#medição-e-qualidade-de-software)
+  - [Observações](#observações)
+  - [Referências](#referências)
 
 <a id="revisions-history"></a>
 
@@ -188,18 +201,13 @@ onde será retornado o total de veículos que passaram.
 
 # Medição e Qualidade de Software
 
-Apresente aqui o formato da Medição e qualidade de software. Você deve mostrar os meios que irá avaliar a qualidade do
-seu software. Apresente o plano e os resultados a partir da prática de ferramentas de detecção de code smells, por
-exemplo. Em Java, temos uma ferramenta chamada JDEODORANT. Você pode avaliar as métricas de qualidade também, por
-exemplo, em Java, temos CKMetrics\[1\]
+Para medir a qualidade do software foi utiliado uma plataforma gratuita para projetos open source que traz métricas de qualidade do código e brechas de segurança chamado LGTM. Além disso ele automaticamente revisa pull requests para garantir que sejam de qualidade, fazendo analise estática para encontrar possíveis problemas. Ademais, ele compara com outros projetos open source para coloca-lo em um ranking de qualidade, dessa forma é possível ter outra métrica de qualidade.
+
+Veja o ranking [clicando aqui](https://lgtm.com/projects/g/caffeine-free/road-toll/context:javascript)
 
 ## Observações
 
-<p>Apresente aqui as dificuldades na disciplina, trabalho pr´atico e coisas do
-tipo</p>
-
-![image](https://user-images.githubusercontent.com/43671640/123296520-1899c380-d4ed-11eb-9ce4-3e6ff683fdfa.png)<br>
-Figura 1: Exemplo
+Uma dificuldade encontrada durante o desenvolvimento do projeto foi a criação das rotas HTTP, foi utilizado a biblioteca router-vue para isto.
 
 <a id="References"></a>
 
