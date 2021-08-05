@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:4445';
+const BASE_URL = 'https://road-toll.herokuapp.com';
 export const END_POINT = {
   LOGIN: '/login',
   REGISTER: '/register',
