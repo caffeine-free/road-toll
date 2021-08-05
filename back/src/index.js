@@ -1,6 +1,6 @@
 const { setupApp } = require('./express-server');
 
-const port = 4445;
+const port = process.env.PORT || 4445;
 setupApp()
   .then((app) => {
     app.listen({ port }, () => console.log(`app running on port ${port}`));
